@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <audio id="myAudio" controls autoplay hidden="true" loop>
+        <source src="audio.mp3" type="audio/mp3" />
+      </audio>
+      <section>
+        <img id="background" src="bg.png" />
+      </section>
+    <script src="RainyDay.js"></script>
+    <script>
+        async function playAudio() {
+          try {
+            const element = document.getElementById("myAudio");
+  
+            element.playAudio();
+          } catch (e) {}
+        }
+        function rain() {
+          try {
+            var image = document.getElementById("background");
+            image.onload = function () {
+              var rainyDay = new RainyDay({
+                image: this,
+                fps: 30,
+                blur: 10,
+              });
+              rainyDay.rain([[5, 2, 2]], 0);
+            };
+            image.src = "bg.png";
+          } catch {
+          } finally {
+          }
+        }
+        rain();
+      </script>
+</body>
+</html>
